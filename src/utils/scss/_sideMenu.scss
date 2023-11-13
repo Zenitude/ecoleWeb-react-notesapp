@@ -1,0 +1,39 @@
+.sidebar-menu {
+    @include flex(20px, no, no, no, center);
+    .dots {
+        @include w-h(70px, 100%);
+        @include flex(5px, column, no, center, center);
+
+        div {
+            @include w-h(20px, 20px);
+            @include border(no, no, no, 50%);
+        }
+
+        div:first-of-type {
+            @include bg($color-flamingo);
+        }
+
+        div:nth-of-type(2) {
+            @include bg($color-corn);
+        }
+
+        div:last-of-type {
+            @include bg($color-meadow);
+        }
+    }
+
+    nav {
+        @include flex(20px);
+        @include ms(auto);
+        @include pe(20px);
+
+        a {
+            display: block;
+            @include flex(0, no, no, center, center);
+            
+            img {
+                @include w-h(50px, 50px);
+            }
+        }
+    }
+}

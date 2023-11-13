@@ -1,0 +1,45 @@
+.main-edit {
+    @include p(10px);
+    & > h2 {
+        color: $color-seashell;
+        @include my(20px 40px);
+    }
+
+    form {
+        @include flex(20px, column);
+        color: $color-seashell;
+
+        div {
+            @include flex(10px, column);
+
+            input {
+                @include w-h(no, 30px);
+                @include minmax-w(240px, 500px);
+                @include px(10px);
+                @include border(1px, solid, $color-seashell, 5px);
+                color: $color-mirage;
+            }
+
+            textarea {
+                @include minmax-w(240px, 500px);
+                @include minmax-h(200px);
+                @include p(10px);
+                @include border(1px, solid, $color-seashell, 5px);
+                color: $color-mirage;
+            }
+        }
+
+        button {
+            @include minmax-w(240px, 500px);
+            @include border(1px, solid, $color-seashell, 5px);
+            color: $color-mirage;
+            @include py(10px);
+            box-shadow: inset 0 0 10px rgba(0,0,0,1);
+
+            &:hover {
+                @include bg($color-meadow);
+                color: $color-seashell;
+            }
+        }
+    }
+}

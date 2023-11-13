@@ -1,0 +1,200 @@
+//reset Marges
+@mixin reset() {
+    *, ::before, ::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html, body, #root {
+        @include w-h(100%);
+        @include minmax-h(100vh);
+        font-family: $font-text;
+    }
+
+    #root {
+        @include flex(0, column);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: $font-title;
+    }
+}
+
+// Flexbox
+@mixin flex($gap: 0, $direction:no, $wrap: no, $justify: no, $items: no) {
+    display: flex;
+    gap: $gap;
+
+    @if $wrap != no { flex-wrap: $wrap;}
+    
+    @if $direction != no {flex-direction: $direction;}
+    
+    @if $justify != no {
+        justify-content: map-get(
+            (
+                start: flex-start,
+                end: flex-end,
+                center: center,
+                between: space-between,
+                around: space-around,
+                evenly: space-evenly,
+                default: initial
+            )
+            , $justify
+        );
+    }
+    
+    @if $items != no {
+        align-items: map-get(
+            (
+                start: flex-start,
+                end: flex-end,
+                center: center,
+                default: stretch
+            )
+            , $items
+        );
+    }
+}
+
+// Grid
+@mixin grid($gap: 0, $cols: no, $rows: no, $justify: no, $items: no) {
+    display: grid;
+    gap: $gap;
+    @if $cols != no { grid-template-columns: $cols ;}
+    @if $rows != no { grid-template-rows: $rows;}
+    @if $justify != no {
+        justify-content: map-get(
+            (
+                start: flex-start,
+                end: flex-end,
+                center: center,
+                between: space-between,
+                around: space-around,
+                evenly: space-evenly,
+                default: initial
+            )
+            , $justify
+        );
+    }
+    
+    @if $items != no {
+        align-items: map-get(
+            (
+                start: flex-start,
+                end: flex-end,
+                center: center,
+                default: stretch
+            )
+            , $items
+        );
+    }
+}
+
+// Dimension
+@mixin w-h($width: no, $height: no) {
+    @if $width != no {width: $width;}
+    @if $height != no {height: $height;}
+}
+
+@mixin minmax-w($min: no, $max: no) {
+    @if $min != no {min-width: $min;}
+    @if $max != no {max-width: $max;}
+}
+
+@mixin minmax-h($min: no, $max: no) {
+    @if $min != no {min-height: $min;}
+    @if $max != no {max-height: $max;}
+}
+
+// Background
+@mixin bg($color: no, $imageorlinear: no) {
+    @if $color != no {
+        background: $color;
+    } @else if $imageorlinear != no {
+        background: $imageorlinear;
+    }
+}
+
+// Margin
+@mixin m($m:0) { margin: $m; }
+@mixin mt($mt:0) { margin-top: $mt; }
+@mixin mb($mb:0) { margin-bottom: $mb; }
+@mixin ms($ms:0) { margin-left: $ms; }
+@mixin me($me:0) { margin-right: $me; }
+@mixin mx($mx:0) { margin-inline: $mx; }
+@mixin my($my:0) { margin-block: $my; }
+
+// Padding
+@mixin p($p:0) { padding: $p; }
+@mixin pt($pt:0) { padding-top: $pt; }
+@mixin pb($pb:0) { padding-bottom: $pb; }
+@mixin ps($ps:0) { padding-left: $ps; }
+@mixin pe($pe:0) { padding-right: $pe; }
+@mixin px($px:0) { padding-inline: $px; }
+@mixin py($py:0) { padding-block: $py; }
+
+//Font
+@mixin text($size: no, $align: no, $weight: no, $style: no ) {
+    @if $size != no {font-size: $size;}
+    @if $weight != no { font-weight: $weight }
+    @if $style != no { font-style: $style; }
+    @if $align != no { text-align: $align; }
+}
+
+// Border
+@mixin border($width:no, $style:no, $color:no, $radius: no) {
+    @if $radius != no {border-radius: $radius;}
+    @if $width != no and $style != no and $color != no {border: $width $style $color;} 
+    @else if $width != no and $style != no { border: $width $style;}
+    @else if $width == none { border: none;}
+    @else if $width != no { border-width: $width;}
+    @else if $style != no { border-style: $style;}
+    @else if $color != no { border-color: $color;}
+}
+
+@mixin border-t($width:no, $style:no, $color:no, $left: no, $right: no) {
+    @if $left != no {border-top-left-radius: $left;}
+    @if $right != no {border-top-right-radius: $right;}
+    @if $width != no and $style != no and $color != no {border-top: $width $style $color;} 
+    @else if $width != no and $style != no { border-top: $width $style;}
+    @else if $width == none { border-top: none;}
+    @else if $width != no { border-top-width: $width;}
+    @else if $style != no { border-top-style: $style;}
+    @else if $color != no { border-top-color: $color;}
+}
+
+@mixin border-e($width:no, $style:no, $color:no, $top: no, $bottom: no) {
+    @if $top != no {border-top-right-radius: $top;}
+    @if $bottom != no {border-bottom-right-radius: $bottom;}
+    @if $width != no and $style != no and $color != no {border-right: $width $style $color;} 
+    @else if $width != no and $style != no { border-right: $width $style;}
+    @else if $width == none { border-right: none;}
+    @else if $width != no { border-right-width: $width;}
+    @else if $style != no { border-right-style: $style;}
+    @else if $color != no { border-right-color: $color;}
+}
+
+@mixin border-b($width:no, $style:no, $color:no, $left: no, $right: no) {
+    @if $left != no {border-bottom-left-radius: $left;}
+    @if $right != no {border-bottom-right-radius: $left;}
+
+    @if ($width != no and $style != no and $color != no) {border-bottom: $width $style $color;} 
+    @else if ($width != no and $style != no) { border-bottom: $width $style;}
+    @else if $width == none { border-bottom: none;}
+    @else if $width != no { border-bottom-width: $width;}
+    @else if $style != no { border-bottom-style: $style;}
+    @else if $color != no { border-bottom-color: $color;}
+}
+
+@mixin border-s($width:no, $style:no, $color:no, $top: no, $bottom: no) {
+    @if $top != no {border-top-left-radius: $top;}
+    @if $bottom != no {border-bottom-left-radius: $bottom;}
+    @if $width != no and $style != no and $color != no {border-left: $width $style $color;} 
+    @else if $width != no and $style != no { border-left: $width $style;}
+    @else if $width == none { border-left: none;}
+    @else if $width != no { border-left-width: $width;}
+    @else if $style != no { border-left-style: $style;}
+    @else if $color != no { border-left-color: $color;}
+}

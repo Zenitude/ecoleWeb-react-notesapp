@@ -1,0 +1,55 @@
+.sidebar-notes {
+    @include grid(0, 1fr, 100px 1fr);
+    position: relative;
+
+    h1 {
+        @include flex(0, no, no, center, center);
+        @include border-e(1px, dashed, $color-mirage);
+        @include text(1.5rem);
+    }
+
+    .menu {
+        @include w-h(50px, 50px);
+        @include flex(0, no, no, center, center);
+        @include bg(transparent);
+        @include border(none);
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        cursor: pointer;
+
+        img {
+            @include w-h(50%, 50%);
+        }
+    }
+
+    .notes {
+        @include bg($color-seashell);
+
+        a {
+            display: block;
+            @include w-h(no, 100px);
+            @include border-b(1px, solid, $color-mirage);
+            @include flex(10px, column, no, center, no);
+            @include ps(5px);
+            color: $color-mirage;
+            
+            h2 {
+                @include text(1.5rem, no);
+            }
+
+            h3 {
+                @include text(1.2rem, no, 500);
+            }
+
+            &:hover {
+                box-shadow: inset 0 0 10px rgba(0,0,0,1);
+            }     
+ 
+        }
+
+        a:first-of-type {
+            @include border-t(1px, dashed, $color-mirage);
+        }
+    }
+}
