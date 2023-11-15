@@ -3,7 +3,6 @@ import { FieldProps } from "../../utils/types/FieldProps"
 export default function Field({type, id, label, note, set}: FieldProps) {
   const changeValue = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const target = e.currentTarget;
-    console.log(e)
     switch(target.id) {
       case "title" : 
         set({...note, title: target.value})

@@ -4,7 +4,6 @@
 
     h1 {
         @include flex(0, no, no, center, center);
-        @include border-e(1px, dashed, $color-mirage);
         @include text(1.5rem);
     }
 

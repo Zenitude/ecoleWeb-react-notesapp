@@ -32,6 +32,11 @@
     .links {
         @include flex(10px, no, wrap);
 
+        a:hover {
+            box-shadow: inset 0 0 10px #000;
+            @include border(1px, solid, $color-seashell);
+        }
+
         a {
             @include border(no, no, no, 5px);
             @include p(5px 10px);
@@ -49,6 +54,7 @@
             &:last-of-type {
                 @include bg($color-flamingo);
             }
+        
         }
 
 
