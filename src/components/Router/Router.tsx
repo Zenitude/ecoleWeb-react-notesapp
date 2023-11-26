@@ -10,7 +10,7 @@ export default function Router() {
             <Route path={"/note/:id"} element={<Note />} />
             <Route path={"/note/:id/delete"} element={<DeleteNote />} />
         </Route>
-        <Route path={"/edit"} element={<Edit />}/>
+        <Route path={"/create"} element={<Edit />}/>
         <Route path={"/edit/:id"} element={<Edit />}/>
     </Routes>
   )

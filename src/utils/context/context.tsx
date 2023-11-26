@@ -13,10 +13,6 @@ export default function ContextProvider({children}: ContextProps) {
         .then(({notes}) => setNotes(notes));
     }, []);
 
-    useEffect(() => {
-      setNotes(notes);
-    }, [notes]);
-
   return (
     <Context.Provider value={{notes, setNotes}}>
       {children}

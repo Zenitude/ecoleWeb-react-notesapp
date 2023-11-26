@@ -13,7 +13,7 @@ export default function SideMenu() {
             <NavLink to={"/"}>
                 <img src={folder} alt="display notes list" />
             </NavLink>
-            <NavLink to={"/edit"}>
+            <NavLink to={"/create"}>
                 <img src={edit} alt="create note" />
             </NavLink>
         </nav>

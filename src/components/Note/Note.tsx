@@ -5,11 +5,10 @@ import { useParams } from "react-router-dom";
 import { Context } from "../../utils/context/context";
 import { Link } from "react-router-dom";
 
-export default function Notes() {
+export default function Note() {
   const { notes } = useContext(Context)!;
   const { id } = useParams();
-  const note = id ? notes.filter(note => note.id === id) : [notes[0]];
-  const { title, subtitle, bodyText } = note[0];
+  const note = notes.find((note) => note.id === id);
 
   return (
     <>
@@ -19,9 +18,9 @@ export default function Notes() {
           <Link to={`/note/${id}/delete`}>Supprimer</Link>
       </div>
       <article>
-          <h2>{title}</h2>
-          <h3>{subtitle}</h3>
-          <p>{bodyText}</p>
+        <h2>{note?.title}</h2>
+        <h3>{note?.subtitle}</h3>
+        <p>{note?.bodyText}</p>
       </article>
     </>
   )

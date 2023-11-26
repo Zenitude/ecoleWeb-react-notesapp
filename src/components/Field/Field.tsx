@@ -1,6 +1,6 @@
 import { FieldProps } from "../../utils/types/FieldProps"
 
-export default function Field({type, id, label, note, set}: FieldProps) {
+export default function Field({type, idNote, label, note, set}: FieldProps) {
   const changeValue = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const target = e.currentTarget;
     switch(target.id) {
@@ -17,16 +17,17 @@ export default function Field({type, id, label, note, set}: FieldProps) {
   }
 
   const displayValue = () => {
-    if(id === "title") { return note.title}
-    else if(id === "subtitle") { return note.subtitle}
+    if(idNote === "title") { return note.title}
+    else if(idNote === "subtitle") { return note.subtitle}
   }
+  
   return (
     <div>
-        <label htmlFor={id}>{label}</label>
+        <label htmlFor={idNote}>{label}</label>
         {
             type === 'area'
-            ? (<textarea name={id} id={id} onChange={(e) => changeValue(e)} value={note.bodyText}></textarea>)
-            : (<input type={type} name={id} id={id} onChange={(e) => changeValue(e)} value={displayValue()}/>)
+            ? (<textarea name={idNote} id={idNote} onChange={(e) => changeValue(e)} value={note.bodyText}></textarea>)
+            : (<input type={type} name={idNote} id={idNote} onChange={(e) => changeValue(e)} value={displayValue()}/>)
         }
     </div>
   )
