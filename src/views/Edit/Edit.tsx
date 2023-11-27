@@ -8,7 +8,7 @@ import { nanoid } from "nanoid";
 export default function Edit() {
     const [ toggle, setToggle ] = useState(false);
     const { id } = useParams();
-    const { notes, setNotes } = useContext(Context)!;
+    const { notes, addNote, updateNote } = useContext(Context)!;
     const currentNote = notes.find((note) => note.id === id);
     const [ note, setNote ] = useState({
         title: "",
@@ -40,20 +40,14 @@ export default function Edit() {
 
     const sendNote = (e: React.FormEvent) => {
         e.preventDefault();
-                    
-        setNotes(() => {
-            if(id) {
-                const indexNote = notes.findIndex(note => note.id === id);
-                notes[indexNote] = note;
-                setTitle(note.title);
-                return notes;
-            } else {
-                notes.push(note);
-                setTitle(note.title);
-                return notes;
-            }
-        })
+
+        if(!id) {
+            addNote(note);
+        } else {
+            updateNote(note);
+        }
         
+        setTitle(note.title);
         setToggle(true);
 
         setTimeout(() => {
