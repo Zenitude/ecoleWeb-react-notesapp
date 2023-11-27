@@ -229,6 +229,10 @@ a {
   color: #F1F1F1;
   margin-block: 20px 40px;
 }
+.main-edit .success {
+  color: #22C55E;
+  margin-block: 20px;
+}
 .main-edit form {
   display: flex;
   gap: 20px;

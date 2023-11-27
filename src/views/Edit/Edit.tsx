@@ -46,7 +46,7 @@ export default function Edit() {
         } else {
             updateNote(note);
         }
-        
+
         setTitle(note.title);
         setToggle(true);
 
@@ -60,7 +60,7 @@ export default function Edit() {
         <main className="main main-edit">
         <h2>{id ? "Modifier" : "Ajouter"} une note</h2>
         {toggle && 
-            (<p>Note <strong>{title}</strong> {id ? "modifiée" : "créé"} avec succès.</p>)
+            (<p className="success">Note <strong>{title}</strong> {id ? "modifiée" : "créé"} avec succès.</p>)
         }
         <form onSubmit={(e) => sendNote(e)}>
             <Field type={"text"} idNote={"title"} label={"Le titre"} note={note} set={setNote}/>

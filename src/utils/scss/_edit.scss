@@ -5,6 +5,11 @@
         @include my(20px 40px);
     }
 
+    .success {
+        color: $color-meadow;
+        @include my(20px);
+    }
+
     form {
         @include flex(20px, column);
         color: $color-seashell;
